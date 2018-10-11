@@ -1,1 +1,72 @@
-"Hello World" 
+<html class="gr__dl2_pushbulletusercontent_com"><doctype html="">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+
+<!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" type="text/javascript" src="sketch_181011b.js"></script>
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+
+  <!-- This line removes any default padding and style. 
+  You might only need one of these values set. -->
+  <style> body {
+padding: 
+  0; 
+margin: 
+  0;
+} 
+</style>
+  </head>
+  <body onload="init()" data-gr-c-s-loaded="true">
+  <script>
+  function init() {
+  //Find our div containers in the DOM
+  var dataContainerOrientation = document.getElementById('dataContainerOrientation');
+  var dataContainerMotion = document.getElementById('dataContainerMotion');
+  alert("I am an alert box!");
+
+  //Check for support for DeviceOrientation event
+  if (window.DeviceOrientationEvent) {
+    window.addEventListener('deviceorientation', function(event) {
+      var alpha = event.alpha;
+      var beta = event.beta;
+      var gamma = event.gamma;
+
+      if (alpha!=null || beta!=null || gamma!=null) 
+      dataContainerOrientation.innerHTML = 'alpha: ' + alpha + '<br/>beta: ' + beta + '<br />gamma: ' + gamma;
+    }
+    , false);
+  }
+
+  // Check for support for DeviceMotion events
+  if (window.DeviceMotionEvent) {
+    window.addEventListener('devicemotion', function(event) {
+      var x = event.accelerationIncludingGravity.x;
+      var y = event.accelerationIncludingGravity.y;
+      var z = event.accelerationIncludingGravity.z;
+      var r = event.rotationRate;
+      var html = 'Acceleration:<br />';
+      html += 'x: ' + x +'<br />y: ' + y + '<br/>z: ' + z+ '<br />';
+      html += 'Rotation rate:<br />';
+      if (r!=null) html += 'alpha: ' + r.alpha +'<br />beta: ' + r.beta + '<br/>gamma: ' + r.gamma + '<br />';
+      dataContainerMotion.innerHTML = html;
+    }
+    );
+  }
+}   
+</script>
+  <div id="dataContainerOrientation">
+  No device orientation data
+  </div>
+  <div id="dataContainerMotion">Acceleration:
+<br>x: 
+null<br>y: 
+null<br>z: 
+null<br>Rotation rate:
+<br>alpha: 
+null<br>beta: 
+null<br>gamma: 
+null<br></div>
+  <doctype html="">
+  </body>
+  </html>
